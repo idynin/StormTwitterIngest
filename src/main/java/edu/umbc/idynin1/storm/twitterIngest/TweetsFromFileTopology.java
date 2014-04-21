@@ -46,7 +46,7 @@ public class TweetsFromFileTopology {
 		// DefaultFileNameFormat().withPath("/twitterStream/");
 
 		FileNameFormat fileNameFormat = new TimeBasedFileNameFormat("/twitterStreamAvro/",
-				new SimpleDateFormat("yyyy/MM/dd/HH/mm")).withExtension(".avro");
+				new SimpleDateFormat("yyyy/MM/dd/HH/mm")).withExtension("_fromfiles.avro");
 
 		AvroTweetFormat avroTweetFormat = new AvroTweetFormat();
 
@@ -73,9 +73,7 @@ public class TweetsFromFileTopology {
 
 			LocalCluster cluster = new LocalCluster();
 			cluster.submitTopology("twitterIngestTopology", conf, builder.createTopology());
-			Utils.sleep(5 * 60 * 1000);
-			cluster.killTopology("twitterIngestTopology");
-			cluster.shutdown();
+
 		}
 	}
 }
