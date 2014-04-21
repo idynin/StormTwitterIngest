@@ -31,7 +31,7 @@ public class TweetsFromFileTopology {
 
 		// RecordFormat format = new DelimitedRecordFormat().withFieldDelimiter("\t");
 
-		RecordFormat avroTweetFormat = new AvroTweetRecordFormat();
+		//RecordFormat avroTweetFormat = new AvroTweetRecordFormat();
 
 		// sync the filesystem after every 100 tuples
 		SyncPolicy syncPolicy = new CountSyncPolicy(100);

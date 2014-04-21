@@ -3,7 +3,7 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package edu.umbc.idynin1;
+package edu.umbc.idynin1.avro;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
@@ -313,18 +313,18 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 	}
 
 	/** Creates a new Tweet RecordBuilder */
-	public static edu.umbc.idynin1.Tweet.Builder newBuilder() {
-		return new edu.umbc.idynin1.Tweet.Builder();
+	public static edu.umbc.idynin1.avro.Tweet.Builder newBuilder() {
+		return new edu.umbc.idynin1.avro.Tweet.Builder();
 	}
 
 	/** Creates a new Tweet RecordBuilder by copying an existing Builder */
-	public static edu.umbc.idynin1.Tweet.Builder newBuilder(edu.umbc.idynin1.Tweet.Builder other) {
-		return new edu.umbc.idynin1.Tweet.Builder(other);
+	public static edu.umbc.idynin1.avro.Tweet.Builder newBuilder(edu.umbc.idynin1.avro.Tweet.Builder other) {
+		return new edu.umbc.idynin1.avro.Tweet.Builder(other);
 	}
 
 	/** Creates a new Tweet RecordBuilder by copying an existing Tweet instance */
-	public static edu.umbc.idynin1.Tweet.Builder newBuilder(edu.umbc.idynin1.Tweet other) {
-		return new edu.umbc.idynin1.Tweet.Builder(other);
+	public static edu.umbc.idynin1.avro.Tweet.Builder newBuilder(edu.umbc.idynin1.avro.Tweet other) {
+		return new edu.umbc.idynin1.avro.Tweet.Builder(other);
 	}
 
 	/**
@@ -347,11 +347,11 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 
 		/** Creates a new Builder */
 		private Builder() {
-			super(edu.umbc.idynin1.Tweet.SCHEMA$);
+			super(edu.umbc.idynin1.avro.Tweet.SCHEMA$);
 		}
 
 		/** Creates a Builder by copying an existing Builder */
-		private Builder(edu.umbc.idynin1.Tweet.Builder other) {
+		private Builder(edu.umbc.idynin1.avro.Tweet.Builder other) {
 			super(other);
 			if (isValidValue(fields()[0], other.text)) {
 				this.text = data().deepCopy(fields()[0].schema(), other.text);
@@ -400,8 +400,8 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Creates a Builder by copying an existing Tweet instance */
-		private Builder(edu.umbc.idynin1.Tweet other) {
-			super(edu.umbc.idynin1.Tweet.SCHEMA$);
+		private Builder(edu.umbc.idynin1.avro.Tweet other) {
+			super(edu.umbc.idynin1.avro.Tweet.SCHEMA$);
 			if (isValidValue(fields()[0], other.text)) {
 				this.text = data().deepCopy(fields()[0].schema(), other.text);
 				fieldSetFlags()[0] = true;
@@ -454,7 +454,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'text' field */
-		public edu.umbc.idynin1.Tweet.Builder setText(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setText(java.lang.CharSequence value) {
 			validate(fields()[0], value);
 			this.text = value;
 			fieldSetFlags()[0] = true;
@@ -467,7 +467,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'text' field */
-		public edu.umbc.idynin1.Tweet.Builder clearText() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearText() {
 			text = null;
 			fieldSetFlags()[0] = false;
 			return this;
@@ -479,7 +479,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'id' field */
-		public edu.umbc.idynin1.Tweet.Builder setId(long value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setId(long value) {
 			validate(fields()[1], value);
 			this.id = value;
 			fieldSetFlags()[1] = true;
@@ -492,7 +492,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'id' field */
-		public edu.umbc.idynin1.Tweet.Builder clearId() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearId() {
 			fieldSetFlags()[1] = false;
 			return this;
 		}
@@ -503,7 +503,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'symbols' field */
-		public edu.umbc.idynin1.Tweet.Builder setSymbols(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setSymbols(java.lang.CharSequence value) {
 			validate(fields()[2], value);
 			this.symbols = value;
 			fieldSetFlags()[2] = true;
@@ -516,7 +516,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'symbols' field */
-		public edu.umbc.idynin1.Tweet.Builder clearSymbols() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearSymbols() {
 			symbols = null;
 			fieldSetFlags()[2] = false;
 			return this;
@@ -528,7 +528,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'urls' field */
-		public edu.umbc.idynin1.Tweet.Builder setUrls(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setUrls(java.lang.CharSequence value) {
 			validate(fields()[3], value);
 			this.urls = value;
 			fieldSetFlags()[3] = true;
@@ -541,7 +541,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'urls' field */
-		public edu.umbc.idynin1.Tweet.Builder clearUrls() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearUrls() {
 			urls = null;
 			fieldSetFlags()[3] = false;
 			return this;
@@ -553,7 +553,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'hashtags' field */
-		public edu.umbc.idynin1.Tweet.Builder setHashtags(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setHashtags(java.lang.CharSequence value) {
 			validate(fields()[4], value);
 			this.hashtags = value;
 			fieldSetFlags()[4] = true;
@@ -566,7 +566,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'hashtags' field */
-		public edu.umbc.idynin1.Tweet.Builder clearHashtags() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearHashtags() {
 			hashtags = null;
 			fieldSetFlags()[4] = false;
 			return this;
@@ -578,7 +578,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'user_mentions' field */
-		public edu.umbc.idynin1.Tweet.Builder setUserMentions(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setUserMentions(java.lang.CharSequence value) {
 			validate(fields()[5], value);
 			this.user_mentions = value;
 			fieldSetFlags()[5] = true;
@@ -591,7 +591,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'user_mentions' field */
-		public edu.umbc.idynin1.Tweet.Builder clearUserMentions() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearUserMentions() {
 			user_mentions = null;
 			fieldSetFlags()[5] = false;
 			return this;
@@ -603,7 +603,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'longitude' field */
-		public edu.umbc.idynin1.Tweet.Builder setLongitude(float value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setLongitude(float value) {
 			validate(fields()[6], value);
 			this.longitude = value;
 			fieldSetFlags()[6] = true;
@@ -616,7 +616,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'longitude' field */
-		public edu.umbc.idynin1.Tweet.Builder clearLongitude() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearLongitude() {
 			fieldSetFlags()[6] = false;
 			return this;
 		}
@@ -627,7 +627,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'latitude' field */
-		public edu.umbc.idynin1.Tweet.Builder setLatitude(float value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setLatitude(float value) {
 			validate(fields()[7], value);
 			this.latitude = value;
 			fieldSetFlags()[7] = true;
@@ -640,7 +640,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'latitude' field */
-		public edu.umbc.idynin1.Tweet.Builder clearLatitude() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearLatitude() {
 			fieldSetFlags()[7] = false;
 			return this;
 		}
@@ -651,7 +651,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'username' field */
-		public edu.umbc.idynin1.Tweet.Builder setUsername(java.lang.CharSequence value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setUsername(java.lang.CharSequence value) {
 			validate(fields()[8], value);
 			this.username = value;
 			fieldSetFlags()[8] = true;
@@ -664,7 +664,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'username' field */
-		public edu.umbc.idynin1.Tweet.Builder clearUsername() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearUsername() {
 			username = null;
 			fieldSetFlags()[8] = false;
 			return this;
@@ -676,7 +676,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'userid' field */
-		public edu.umbc.idynin1.Tweet.Builder setUserid(long value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setUserid(long value) {
 			validate(fields()[9], value);
 			this.userid = value;
 			fieldSetFlags()[9] = true;
@@ -689,7 +689,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'userid' field */
-		public edu.umbc.idynin1.Tweet.Builder clearUserid() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearUserid() {
 			fieldSetFlags()[9] = false;
 			return this;
 		}
@@ -700,7 +700,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Sets the value of the 'created_at' field */
-		public edu.umbc.idynin1.Tweet.Builder setCreatedAt(long value) {
+		public edu.umbc.idynin1.avro.Tweet.Builder setCreatedAt(long value) {
 			validate(fields()[10], value);
 			this.created_at = value;
 			fieldSetFlags()[10] = true;
@@ -713,7 +713,7 @@ public class Tweet extends org.apache.avro.specific.SpecificRecordBase implement
 		}
 
 		/** Clears the value of the 'created_at' field */
-		public edu.umbc.idynin1.Tweet.Builder clearCreatedAt() {
+		public edu.umbc.idynin1.avro.Tweet.Builder clearCreatedAt() {
 			fieldSetFlags()[10] = false;
 			return this;
 		}

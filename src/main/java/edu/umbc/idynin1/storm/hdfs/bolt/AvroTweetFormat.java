@@ -1,4 +1,4 @@
-package edu.umbc.idynin1.storm.twitterIngest;
+package edu.umbc.idynin1.storm.hdfs.bolt;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -10,23 +10,15 @@ import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.io.DatumWriter;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.apache.commons.lang.StringUtils;
-import org.apache.storm.hdfs.bolt.format.RecordFormat;
 
 import twitter4j.JSONArray;
 import twitter4j.JSONException;
 import twitter4j.JSONObject;
-import edu.umbc.idynin1.Tweet;
 import backtype.storm.tuple.Tuple;
+import edu.umbc.idynin1.avro.Tweet;
 
-public class AvroTweetRecordFormat implements RecordFormat {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Override
-	public byte[] format(Tuple tuple) {
+public class AvroTweetFormat {
+	public Tweet format(Tuple tuple) {
 		String tweetJSON = tuple.getString(0);
 		try {
 			JSONObject tweet = new JSONObject(tweetJSON);
@@ -76,22 +68,10 @@ public class AvroTweetRecordFormat implements RecordFormat {
 					.setUserid(userid)
 					.setCreatedAt(createdAt).build();
 
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-			DatumWriter<Tweet> tweetWriter = new SpecificDatumWriter<Tweet>(Tweet.class);
-			DataFileWriter<Tweet> tweetDFW = new DataFileWriter<Tweet>(tweetWriter);
-			tweetDFW.create(Tweet.getClassSchema(), baos);
-			tweetDFW.append(avroTweet);
-			tweetDFW.close();
-
-			return baos.toByteArray();
+			return avroTweet;
 
 		} catch (JSONException e) {
-			System.err.println("TWEET WITHOUT COORDINATES: " + tweetJSON);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -102,5 +82,4 @@ public class AvroTweetRecordFormat implements RecordFormat {
 		return array.toString().substring(1, array.toString().length() - 1).replaceAll("\"", "")
 				.split(",");
 	}
-
 }

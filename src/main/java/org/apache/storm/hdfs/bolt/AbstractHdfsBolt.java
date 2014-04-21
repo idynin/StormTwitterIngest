@@ -36,64 +36,67 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public abstract class AbstractHdfsBolt extends BaseRichBolt {
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractHdfsBolt.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AbstractHdfsBolt.class);
 
-    protected ArrayList<RotationAction> rotationActions = new ArrayList<RotationAction>();
-    private Path currentFile;
-    protected OutputCollector collector;
-    protected FileSystem fs;
-    protected SyncPolicy syncPolicy;
-    protected FileRotationPolicy rotationPolicy;
-    protected FileNameFormat fileNameFormat;
-    protected int rotation = 0;
-    protected String fsUrl;
-//    protected String path;
+	protected ArrayList<RotationAction> rotationActions = new ArrayList<RotationAction>();
+	private Path currentFile;
+	protected OutputCollector collector;
+	protected FileSystem fs;
+	protected SyncPolicy syncPolicy;
+	protected FileRotationPolicy rotationPolicy;
+	protected FileNameFormat fileNameFormat;
+	protected int rotation = 0;
+	protected String fsUrl;
+	// protected String path;
 
-    protected Configuration hdfsConfig;
+	protected Configuration hdfsConfig;
 
-    protected void rotateOutputFile() throws IOException {
-        LOG.info("Rotating output file...");
-        long start = System.currentTimeMillis();
-        closeOutputFile();
-        this.rotation++;
+	protected void rotateOutputFile() throws IOException {
+		LOG.info("Rotating output file...");
+		long start = System.currentTimeMillis();
+		closeOutputFile();
+		this.rotation++;
 
-        Path newFile = createOutputFile();
-        LOG.info("Performing {} file rotation actions.", this.rotationActions.size());
-        for(RotationAction action : this.rotationActions){
-            action.execute(this.fs, this.currentFile);
-        }
-        this.currentFile = newFile;
-        long time = System.currentTimeMillis() - start;
-        LOG.info("File rotation took {} ms.", time);
-    }
+		Path newFile = createOutputFile();
+		LOG.info("Performing {} file rotation actions.", this.rotationActions.size());
+		for (RotationAction action : this.rotationActions) {
+			action.execute(this.fs, this.currentFile);
+		}
+		this.currentFile = newFile;
+		long time = System.currentTimeMillis() - start;
+		LOG.info("File rotation took {} ms.", time);
+	}
 
-    public void prepare(Map conf, TopologyContext topologyContext, OutputCollector collector){
-        if (this.syncPolicy == null) throw new IllegalStateException("SyncPolicy must be specified.");
-        if (this.rotationPolicy == null) throw new IllegalStateException("RotationPolicy must be specified.");
-        if (this.fsUrl == null) {
-            throw new IllegalStateException("File system URL must be specified.");
-        }
+	public void prepare(Map conf, TopologyContext topologyContext, OutputCollector collector) {
+		if (this.syncPolicy == null)
+			throw new IllegalStateException("SyncPolicy must be specified.");
+		if (this.rotationPolicy == null)
+			throw new IllegalStateException("RotationPolicy must be specified.");
+		if (this.fsUrl == null) {
+			throw new IllegalStateException("File system URL must be specified.");
+		}
 
-        this.collector = collector;
-        this.fileNameFormat.prepare(conf, topologyContext);
-        this.hdfsConfig = new Configuration();
+		this.collector = collector;
+		this.fileNameFormat.prepare(conf, topologyContext);
+		this.hdfsConfig = new Configuration();
 
-        try{
-            doPrepare(conf, topologyContext, collector);
-            this.currentFile = createOutputFile();
+		try {
+			doPrepare(conf, topologyContext, collector);
+			this.currentFile = createOutputFile();
 
-        } catch (Exception e){
-            throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(), e);
-        }
-    }
+		} catch (Exception e) {
+			throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(), e);
+		}
+	}
 
-    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-    }
+	public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
+	}
 
-    abstract void closeOutputFile() throws IOException;
+	public abstract void closeOutputFile() throws IOException;
 
-    abstract Path createOutputFile() throws IOException;
+	public abstract Path createOutputFile() throws IOException;
 
-    abstract void doPrepare(Map conf, TopologyContext topologyContext, OutputCollector collector) throws IOException;
+	public abstract void doPrepare(Map conf, TopologyContext topologyContext,
+			OutputCollector collector) throws IOException;
 
 }
