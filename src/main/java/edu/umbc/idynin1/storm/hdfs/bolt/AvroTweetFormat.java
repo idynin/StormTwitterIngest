@@ -1,14 +1,10 @@
 package edu.umbc.idynin1.storm.hdfs.bolt;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import org.apache.avro.file.DataFileWriter;
-import org.apache.avro.io.DatumWriter;
-import org.apache.avro.specific.SpecificDatumWriter;
 import org.apache.commons.lang.StringUtils;
 
 import twitter4j.JSONArray;
@@ -17,8 +13,13 @@ import twitter4j.JSONObject;
 import backtype.storm.tuple.Tuple;
 import edu.umbc.idynin1.avro.Tweet;
 
-public class AvroTweetFormat {
-	public Tweet format(Tuple tuple) {
+public class AvroTweetFormat implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static Tweet format(Tuple tuple) {
 		String tweetJSON = tuple.getString(0);
 		try {
 			JSONObject tweet = new JSONObject(tweetJSON);
@@ -78,7 +79,7 @@ public class AvroTweetFormat {
 		return null;
 	}
 
-	private String[] jsonArrayToStringArray(JSONArray array) {
+	private static String[] jsonArrayToStringArray(JSONArray array) {
 		return array.toString().substring(1, array.toString().length() - 1).replaceAll("\"", "")
 				.split(",");
 	}
