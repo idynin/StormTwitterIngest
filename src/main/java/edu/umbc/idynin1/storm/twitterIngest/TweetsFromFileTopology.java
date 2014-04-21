@@ -54,7 +54,7 @@ public class TweetsFromFileTopology {
 		// .withFileNameFormat(fileNameFormat).withRecordFormat(avroTweetFormat)
 		// .withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy);
 
-		AvroTweetFileBolt atfBolt = new AvroTweetFileBolt().withFsUrl("hdfs://localhost:8020")
+		AvroTweetFileBolt atfBolt = new AvroTweetFileBolt().withFsUrl("hdfs://hd1:8020")
 				.withFileNameFormat(fileNameFormat).withTweetFormat(avroTweetFormat)
 				.withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy);
 
