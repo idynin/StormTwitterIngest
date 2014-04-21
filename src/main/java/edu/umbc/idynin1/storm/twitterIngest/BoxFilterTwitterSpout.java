@@ -98,7 +98,7 @@ public class BoxFilterTwitterSpout extends BaseRichSpout {
 
 	}
 
-	private static boolean validateBoundingBox(String s) {
+	static boolean validateBoundingBox(String s) {
 		String[] parts = s.trim().replaceAll("\\s+", "").split(",");
 		try {
 			if (parts.length == 4) {
@@ -115,7 +115,7 @@ public class BoxFilterTwitterSpout extends BaseRichSpout {
 		return false;
 	}
 
-	private static double[][] boundingBoxStringToBoundingBox(String in) {
+	static double[][] boundingBoxStringToBoundingBox(String in) {
 		String[] parts = in.trim().replaceAll("\\s+", "").split(",");
 		double[][] out = new double[parts.length / 2][2];
 		if (parts.length >= 4 && parts.length % 2 == 0) {
@@ -128,7 +128,7 @@ public class BoxFilterTwitterSpout extends BaseRichSpout {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

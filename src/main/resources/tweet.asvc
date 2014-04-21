@@ -1,0 +1,63 @@
+{
+  "type" : "record",
+  "name" : "Tweet",
+  "namespace" : "edu.umbc.idynin1",
+  "fields" : [ 
+  {
+    "name" : "text",
+    "type" : "string",
+    "doc"  : "Tweet text"
+  },
+  {
+    "name" : "id",
+    "type" : "long",
+    "doc"  : "Tweet id"
+  },
+  {
+    "name" : "symbols",
+    "type" : "string",
+    "doc"  : "Entities: symbols"
+  },
+  {
+    "name" : "urls",
+    "type" : "string",
+    "doc"  : "Entities: urls"
+  },
+  {
+    "name" : "hashtags",
+    "type" : "string",
+    "doc"  : "Entities: hashtags"
+  },
+  {
+    "name" : "user_mentions",
+    "type" : "string",
+    "doc"  : "Entities: user mentions"
+  },
+  {
+    "name" : "longitude",
+    "type" : "float",
+    "doc"  : "Geographic Coordinate: longitude"
+  },
+  {
+    "name" : "latitude",
+    "type" : "float",
+    "doc"  : "Geographic Coordinate: latitude"
+  },
+  {
+    "name" : "username",
+    "type" : "string",
+    "doc"  : "Username"
+  }, 
+  {
+    "name" : "userid",
+    "type" : "long",
+    "doc"  : "User's ID"
+  },
+  {
+    "name" : "created_at",
+    "type" : "long",
+    "doc"  : "Time tweet was created"
+  } 
+  ],
+  "doc:" : "Tweet Schema"
+}
