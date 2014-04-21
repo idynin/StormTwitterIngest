@@ -41,7 +41,7 @@ public class TweetsFromFileTopology {
 
 		// FileNameFormat fileNameFormat = new DefaultFileNameFormat().withPath("/twitterStream/");
 
-		FileNameFormat fileNameFormat = new TimeBasedFileNameFormat("/twitterStream/",
+		FileNameFormat fileNameFormat = new TimeBasedFileNameFormat("/twitterStreamAvro/",
 				new SimpleDateFormat("yyyy/MM/dd/HH/mm")).withExtension(".seq");
 
 		HdfsBolt hdfsBolt = new HdfsBolt().withFsUrl("hdfs://localhost:9000")
@@ -50,6 +50,7 @@ public class TweetsFromFileTopology {
 
 		builder.setSpout("tweet", tweetSpout, 1);
 		builder.setBolt("filterBolt", tbbfb, 1).shuffleGrouping("tweet");
+		builder.setBolt("hdfsBolt", hdfsBolt).shuffleGrouping("filterBolt");
 
 		Config conf = new Config();
 		conf.setDebug(true);
